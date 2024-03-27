@@ -26,7 +26,7 @@ const Categories = () => {
     }, [])
     // console.log(cateData.length);
     const slideForward = () => {
-        if (cateData.length - 7 == slide) return false;
+        if (cateData.length - 0 == slide) return false;
         setSlide(slide + 7)
         console.log("click frward", cateData.length);
     }
@@ -36,7 +36,7 @@ const Categories = () => {
         console.log("click back");
     }
     return (
-        <div className='py-2 max-w-[1200px] mx-auto items-center my-6'>
+        <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <div className='flex items-center justify-between'>
                 <div className='font-bold'>What's is on your mind?</div>
                 <div className='flex gap-3'>
@@ -61,7 +61,7 @@ const Categories = () => {
                             <div key={i} className=''>
                                 <div style={{
                                     transform: `translateX(-${slide * 100}%)`
-                                }} className='group w-[130px] h-[130px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
+                                }} className='group w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[130px] md:h-[130px] lg:w-[150px] lg:h-[150px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
                                     <img className='group-hover:scale-100 duration-300' src={data.strCategoryThumb} alt="" />
                                     <div className='flex items-center'>
                                     </div>

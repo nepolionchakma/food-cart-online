@@ -43,12 +43,12 @@ const Country = () => {
     //     loadCountry();
     // }, [])
     return (
-        <div className='py-2 max-w-[1200px] mx-auto items-center my-6'>
+        <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <div className='grid grid-cols-9 gap-3'>
                 {
                     countryCode.map((d, i) => {
                         return (
-                            <div key={i} className='shadow rounded hover:bg-orange-400 duration-500 flex items-center justify-center content-center'>
+                            <div key={i} className=' hover:bg-orange-400 duration-500 flex items-center justify-center content-center'>
                                 <div className='w-[100px] h-[100px] flex'>
                                     <img src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${d}.svg`} alt="" />
                                 </div>

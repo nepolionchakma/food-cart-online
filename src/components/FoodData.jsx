@@ -14,9 +14,9 @@ const FoodData = () => {
         loadCategories();
     }, [])
     return (
-        <div className='py-2 max-w-[1200px] mx-auto items-center my-6'>
+        <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <h4 className='font-bold my-6'>What's your Mind Now to buy ?</h4>
-            <div className='grid grid-cols-4 gap-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
                 {
                     sliceData.map((data, i) => {
                         return (
