@@ -9,19 +9,29 @@ import FoodCategory2 from './components/FoodCategory2.jsx'
 import Footer from './components/Footer.jsx'
 import Login from './components/Login.jsx'
 import Error from './components/Error.jsx'
+import Home from './components/Home.jsx'
+import Form from './components/Form.jsx'
 
 const router = createBrowserRouter(
   [
     {
       path: '/',
       element: <App></App>,
-      errorElement: <Error></Error>
-      // children: [
-      //   {
-      //     path: "/Login",
-      //     element: <Login></Login>
-      //   }
-      // ]
+      errorElement: <Error></Error>,
+      children: [
+        {
+          path: "",
+          element: <Home></Home>
+        },
+        {
+          path: "/LogIn",
+          element: <Login></Login>
+        },
+        {
+          path: "/Form",
+          element: <Form></Form>
+        },
+      ]
     },
     {
       // path: '',
