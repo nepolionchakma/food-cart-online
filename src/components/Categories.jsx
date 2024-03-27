@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import CategoryItemDetails from './CategoryItemDetails';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [cateData, setCateData] = useState([]);
@@ -35,6 +37,10 @@ const Categories = () => {
         setSlide(slide - 7)
         console.log("click back");
     }
+
+    // const detailsDataShow = () => {
+    //     alert("heool")
+    // }
     return (
         <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <div className='flex items-center justify-between'>
@@ -58,7 +64,7 @@ const Categories = () => {
                 {
                     isLoading ? "Loading..." : cateData?.map((data, i) => {
                         return (
-                            <div key={i} className=''>
+                            <Link to={`/details/${data.strCategory}`}><div key={i} className=''>
                                 <div style={{
                                     transform: `translateX(-${slide * 100}%)`
                                 }} className='group w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[130px] md:h-[130px] lg:w-[150px] lg:h-[150px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
@@ -68,8 +74,9 @@ const Categories = () => {
                                     <div className='tracking-tighter'>
                                         <h4 className='font-bold'>{data.strCategory}</h4>
                                     </div>
+
                                 </div>
-                            </div>
+                            </div></Link>
                         )
                     }
                     )

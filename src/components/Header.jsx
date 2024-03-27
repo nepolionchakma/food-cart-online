@@ -3,6 +3,7 @@ import { CiLogin, CiSearch, CiShoppingCart } from "react-icons/ci";
 import { IoIosArrowDown, IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { TbMenu, TbProgressHelp } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -62,7 +63,7 @@ const Header = () => {
             <header className='bg-white duration-300 shadow sticky top-0 z-[9] px-5'>
                 <div className='py-2 max-w-[1200px] mx-auto flex justify-center items-center xlsm:justify-around'>
                     <div className='w-[80px]'>
-                        <img src="https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Mountain-logo-Design-Graphics-9785421-1-580x435.png" alt="" />
+                        <Link to="/"><img src="https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Mountain-logo-Design-Graphics-9785421-1-580x435.png" alt="" /></Link>
                     </div>
                     <div className='hover:text-orange-500 font-bold cursor-pointer sm:items-center sm:mx-auto sm:flex' onClick={showSlideMenu} >
                         <span className='border-b-[3px] border-orange-500 mx-2'>Marishya ,</span> Rangamati,BD <IoIosArrowDown className='inline font-bold text-2xl' />
@@ -72,7 +73,7 @@ const Header = () => {
                             {
                                 links.map((link, index) => {
                                     return (
-                                        <li key={index} className='flex items-center gap-2 hover:text-orange-500 cursor-pointer'>
+                                        <li key={index} className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'>
                                             {link.icon}{link.name} <sup className='text-orange-600'>{link.offer}</sup>
                                         </li>
                                     )
@@ -80,6 +81,7 @@ const Header = () => {
                             }
                         </div>
                     </nav>
+                    {/* PopUp----Nav Menu */}
                     <div className='flex items-center justify-center p-4 md:hidden duration-300 relative'>
                         <div className='absolute z-10'>
                             {toggleMenu ? <RxCross2 className='inline' onClick={hideMenu}></RxCross2> : <TbMenu className='inline' onClick={showMenu}></TbMenu>}

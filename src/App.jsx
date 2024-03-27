@@ -6,7 +6,6 @@ import FoodData from './components/FoodData'
 import Header from './components/Header'
 
 function App() {
-
   return (
     <>
       <Header></Header>
