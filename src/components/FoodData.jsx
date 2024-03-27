@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const FoodData = () => {
     const [loadData, setLoadData] = useState([]);
@@ -6,7 +7,7 @@ const FoodData = () => {
     // const { strIngredient, strDescription } = sliceData;
     // const sliceDescription = sliceData.strDescription(0, 20)
     const loadCategories = async () => {
-        const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list");
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i");
         const data = await res.json();
         setLoadData(data.meals);
     }
@@ -26,7 +27,13 @@ const FoodData = () => {
                                     <div className='group w-[200px] p-4 '>
                                         <img className='group-hover:scale-100' src={`https://www.themealdb.com/images/ingredients/${data.strIngredient}.png`} alt="" />
                                     </div>
-                                    <p>{data.strDescription.slice(0, 120) + "..."}</p>
+                                    {/* <p>{data.strDescription.slice(0, 120) + "..."}</p> 
+                                    
+                                    <Link to={`/details/foodIngredient/${data.strIngredient}`}>details</Link>
+                                    {console.log("strIngredient", data.strIngredient)}
+                                    
+                                    */}
+
                                 </div>
                             </div>
                         )

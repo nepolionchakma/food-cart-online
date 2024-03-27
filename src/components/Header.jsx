@@ -25,20 +25,24 @@ const Header = () => {
     const links = [
         {
             icon: <IoMdSearch />,
-            name: "Search"
+            name: "Search",
+            link: "Search"
         },
         {
             icon: <TbProgressHelp />,
             name: "Offer",
+            link: "Offer",
             offer: 'new'
         },
         {
             icon: <CiLogin />,
-            name: "LogIn"
+            name: "LogIn",
+            link: "LogIn",
         },
         {
             icon: <CiShoppingCart />,
-            name: "Cart"
+            name: "Cart",
+            link: "Cart",
         },
     ]
     return (
@@ -73,9 +77,9 @@ const Header = () => {
                             {
                                 links.map((link, index) => {
                                     return (
-                                        <li key={index} className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'>
+                                        <Link to={link.link} key={index} className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'>
                                             {link.icon}{link.name} <sup className='text-orange-600'>{link.offer}</sup>
-                                        </li>
+                                        </Link>
                                     )
                                 })
                             }
