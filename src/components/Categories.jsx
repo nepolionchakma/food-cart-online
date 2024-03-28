@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import CategoryItemDetails from './CategoryItemDetails';
 import { Link } from 'react-router-dom';
 
 const Categories = () => {
@@ -8,6 +7,7 @@ const Categories = () => {
     const [slide, setSlide] = useState(0);
     const [isLoading, setLoading] = useState(true);
     // const data = cateData.categories;
+    // console.log(cateData, "cateData");
 
     // Load Data
     const loadCategories = async () => {
@@ -18,7 +18,7 @@ const Categories = () => {
     }
     useEffect(() => {
         loadCategories();
-        // ----------------Direct Fetch Function______
+        // ----------------Direct Fetch Function 2nd option______
         // fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         //     .then(res => res.json())
         //     .then(data => {
@@ -37,7 +37,6 @@ const Categories = () => {
         setSlide(slide - 7)
         console.log("click back");
     }
-
     // const detailsDataShow = () => {
     //     alert("heool")
     // }
@@ -64,7 +63,7 @@ const Categories = () => {
                 {
                     isLoading ? "Loading..." : cateData?.map((data, i) => {
                         return (
-                            <Link to={`/details/${data.strCategory}`}><div key={i} className=''>
+                            <Link to={`/category/${data.strCategory}`} key={i}><div className=''>
                                 <div style={{
                                     transform: `translateX(-${slide * 100}%)`
                                 }} className='group w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[130px] md:h-[130px] lg:w-[150px] lg:h-[150px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
@@ -85,7 +84,7 @@ const Categories = () => {
             </div>
             <hr className='border-[2px]' />
 
-        </div>
+        </div >
     );
 };
 //  Object.values(cateData).map(data => console.log(data))

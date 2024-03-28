@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -11,6 +11,8 @@ import Login from './components/Login.jsx'
 import Error from './components/Error.jsx'
 import Home from './components/Home.jsx'
 import Form from './components/Form.jsx'
+import SearchItems from './components/SearchItems.jsx'
+import DataNotFound from './components/DataNotFound.jsx'
 
 const router = createBrowserRouter(
   [
@@ -31,26 +33,36 @@ const router = createBrowserRouter(
           path: "/Form",
           element: <Form></Form>
         },
+
+        {
+          path: '/search/:searchValue',
+          loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${params.searchValue}`),
+          element: <SearchItems></SearchItems>
+        },
+        {
+          path: '/search/failed/:searchValue',
+          element: <DataNotFound></DataNotFound>
+        },
+        {
+          path: '/category/:strCategory',
+          loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.strCategory}`),
+          element: <CategoryItemDetails></CategoryItemDetails>
+        },
+        {
+          path: '/details/food/:idMeal',
+          loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`),
+          element: <FoodDetails></FoodDetails>
+        },
+        {
+          path: '/details/foodIngredient/:strIngredient',
+          loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=${params.strIngredient}`),
+          element: <FoodCategory2></FoodCategory2>
+        },
       ]
     },
     {
       // path: '',
       // element: <Login></Login>,
-    },
-    {
-      path: '/details/:strCategory',
-      loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.strCategory}`),
-      element: <CategoryItemDetails></CategoryItemDetails>
-    },
-    {
-      path: '/details/food/:idMeal',
-      loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`),
-      element: <FoodDetails></FoodDetails>
-    },
-    {
-      path: '/details/foodIngredient/:strIngredient',
-      loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=${params.strIngredient}`),
-      element: <FoodCategory2></FoodCategory2>
     },
   ]
 )

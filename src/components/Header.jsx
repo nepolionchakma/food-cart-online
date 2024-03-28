@@ -3,12 +3,27 @@ import { CiLogin, CiSearch, CiShoppingCart } from "react-icons/ci";
 import { IoIosArrowDown, IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { TbMenu, TbProgressHelp } from "react-icons/tb";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
     const [toggle, setToggle] = useState(false);
     const [toggleMenu, setToggleMenu] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const navigate = useNavigate();
+    const handleSeach = (e) => {
+
+        setSearchValue(e.target.value);
+    }
+    const searchFormSubmit = (e) => {
+        e.preventDefault();
+        if (searchValue !== '') {
+            navigate(`/search/${searchValue}`);
+            setSearchValue("");
+        } else {
+            alert("fill the keyword")
+        }
+    }
 
     const showSlideMenu = () => {
         setToggle(true);
@@ -57,9 +72,17 @@ const Header = () => {
                 }} className='bg-white w-[40%] sm:w-[50%] xsm:w-[50%] xlsm:w-[60%] h-full duration-1000 p-8' style={{
                     left: toggle ? "0%" : "-100%",
                 }}>
-                    <div className='flex items-center justify-center border'>
-                        <input className='w-full p-2' type="text" placeholder='Search By Location' />
-                        <CiSearch className='mx-4 cursor-pointer'></CiSearch>
+                    <form
+                        onSubmit={searchFormSubmit}
+                        className='flex items-center justify-center border'>
+                        <input
+                            value={searchValue}
+                            onChange={handleSeach}
+                            className='w-full p-2' type="text" placeholder='Search By Location' />
+                        <CiSearch onClick={searchFormSubmit} className='mx-4 cursor-pointer'></CiSearch>
+                    </form>
+                    <div>
+
                     </div>
                 </div>
             </div>
@@ -69,20 +92,24 @@ const Header = () => {
                     <div className='w-[80px]'>
                         <Link to="/"><img src="https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Mountain-logo-Design-Graphics-9785421-1-580x435.png" alt="" /></Link>
                     </div>
-                    <div className='hover:text-orange-500 font-bold cursor-pointer sm:items-center sm:mx-auto sm:flex' onClick={showSlideMenu} >
-                        <span className='border-b-[3px] border-orange-500 mx-2'>Marishya ,</span> Rangamati,BD <IoIosArrowDown className='inline font-bold text-2xl' />
+                    <div className='hover:text-orange-500 font-bold sm:items-center sm:flex '>
+                        <span className='border-b-[3px] border-orange-500 mx-2'>Marishya ,</span> Rangamati,BD <IoIosArrowDown onClick={showSlideMenu} className='inline font-bold text-2xl' />
+
                     </div>
+                    <form onSubmit={searchFormSubmit}
+                        className='flex items-center gap-2 hover:text-orange-500 cursor-pointer relative xlsm:hidden md:inline-flex'>
+                        <input
+                            value={searchValue}
+                            onChange={handleSeach}
+                            type="text" className='mb-0 bg-gray-200 h-[29px] focus:border-orange-500' /><IoMdSearch onClick={searchFormSubmit} className='absolute right-0 mr-2' />
+                    </form>
                     <nav className='list-none mx-3 gap-4 font-bold text-[17px] hidden md:block' >
                         <div className='flex'>
-                            {
-                                links.map((link, index) => {
-                                    return (
-                                        <Link to={link.link} key={index} className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'>
-                                            {link.icon}{link.name} <sup className='text-orange-600'>{link.offer}</sup>
-                                        </Link>
-                                    )
-                                })
-                            }
+
+                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><TbProgressHelp />Offer <sup className='text-orange-600'>new</sup></Link>
+                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiLogin />Login</Link>
+                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiShoppingCart />Cart</Link>
+                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'></Link>
                         </div>
                     </nav>
                     {/* PopUp----Nav Menu */}

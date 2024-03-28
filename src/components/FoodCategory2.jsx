@@ -5,7 +5,7 @@ import Header from './Header';
 const FoodCategory2 = () => {
     const load = useLoaderData();
     const loadData = load.meals;
-    // console.log(loadedData, "loading");
+    console.log(loadData, "loading");
     return (
         <div>
             <Header></Header>
