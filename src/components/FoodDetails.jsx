@@ -16,10 +16,18 @@ const FoodDetails = () => {
     return (
         <div className='py-2 my-8 max-w-[1200px] mx-auto'>
             <div className=' flex justify-center items-center xlsm:justify-around'>
-                <div className='flex items-center flex-col'>
+                <div className='flex items-center flex-col px-4'>
                     <h3 className='font-bold text-center text-xl'>Name Food : <span className='text-orange-500'>{strMeal}</span></h3>
-                    <div className='w-[100px] my-6'>
-                        <img src={strMealThumb} alt="" />
+                    <div className='flex flex-wrap gap-5 justify-center'>
+                        <div className='w-[200px] my-6 gap-3'>
+                            <img src={strMealThumb} alt="" />
+                        </div>
+                        <div className='w-[200px] my-6 gap-3'>
+                            <img src={strMealThumb} alt="" />
+                        </div>
+                        <div className='w-[200px] my-6 gap-3'>
+                            <img src={strMealThumb} alt="" />
+                        </div>
                     </div>
                     <span>Area :{strArea}</span>
                     <br />

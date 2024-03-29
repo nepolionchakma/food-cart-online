@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
@@ -42,47 +43,54 @@ const Categories = () => {
     // }
     return (
         <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
-            <div className='flex items-center justify-between'>
-                <div className='font-bold'>What's is on your mind?</div>
-                <div className='flex gap-3'>
-                    <div className="w-[40px] h-[40px] rounded-full bg-[#2093] shadow-xl flex items-center justify-center hover:bg-orange-300 duration-700 hover:text-white hover:text-[20px" onClick={slideBack}>
-                        <IoIosArrowBack className='' />
-                    </div>
-                    <div className="w-[40px] h-[40px] rounded-full bg-[#2093] shadow-xl flex items-center justify-center hover:bg-orange-300 duration-700 hover:text-white hover:text-[20px" onClick={slideForward}>
-                        <IoIosArrowForward className='inline' />
-                    </div>
-                </div>
-            </div>
-            {/* <div className=''>
+            {
+                isLoading ? <CircularProgress color="success" /> :
+                    <div>
+                        <div className='flex items-center justify-between'>
+                            <div className='font-bold'>What's is on your mind?</div>
+                            <div className='flex gap-3'>
+                                <div className="w-[40px] h-[40px] rounded-full bg-[#2093] shadow-xl flex items-center justify-center hover:bg-orange-300 duration-700 hover:text-white hover:text-[20px" onClick={slideBack}>
+                                    <IoIosArrowBack className='' />
+                                </div>
+                                <div className="w-[40px] h-[40px] rounded-full bg-[#2093] shadow-xl flex items-center justify-center hover:bg-orange-300 duration-700 hover:text-white hover:text-[20px" onClick={slideForward}>
+                                    <IoIosArrowForward className='inline' />
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className=''>
                 <div className="w-[250px] h-[200px] bg-[#2093] rounded shadow-xl hover:bg-orange-300 duration-700"></div>
                 <div className="w-[250px] h-[200px] bg-[#2093] rounded shadow-xl hover:bg-orange-300 duration-700"></div>
                 <div className="w-[250px] h-[200px] bg-[#2093] rounded shadow-xl hover:bg-orange-300 duration-700"></div>
                 <div className="w-[250px] h-[200px] bg-[#2093] rounded shadow-xl hover:bg-orange-300 duration-700"></div>
             </div> */}
-            <div className='flex gap-5 my-5 overflow-hidden'>
-                {
-                    isLoading ? "Loading..." : cateData?.map((data, i) => {
-                        return (
-                            <Link to={`/category/${data.strCategory}`} key={i}><div className=''>
-                                <div style={{
-                                    transform: `translateX(-${slide * 100}%)`
-                                }} className='group w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[130px] md:h-[130px] lg:w-[150px] lg:h-[150px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
-                                    <img className='group-hover:scale-100 duration-300' src={data.strCategoryThumb} alt="" />
-                                    <div className='flex items-center'>
-                                    </div>
-                                    <div className='tracking-tighter'>
-                                        <h4 className='font-bold'>{data.strCategory}</h4>
-                                    </div>
+                        <div className='flex gap-5 my-5 overflow-hidden'>
+                            {
+                                cateData?.map((data, i) => {
+                                    return (
+                                        <Link to={`/category/${data.strCategory}`} key={i}><div className=''>
+                                            <span className="loading loading-spinner text-orange-600 loading-lg"></span>
+                                            <div style={{
+                                                transform: `translateX(-${slide * 100}%)`
+                                            }} className='group w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[130px] md:h-[130px] lg:w-[150px] lg:h-[150px] shadow flex flex-col items-center hover:bg-orange-500 hover:text-white hover:font-bold duration-1000 p-6 my-4 rounded-full cursor-pointer relative'>
+                                                <img className='group-hover:scale-100 duration-300' src={data.strCategoryThumb} alt="" />
+                                                <div className='flex items-center'>
+                                                </div>
+                                                <div className='tracking-tighter'>
+                                                    <h4 className='font-bold'>{data.strCategory}</h4>
+                                                </div>
 
-                                </div>
-                            </div></Link>
-                        )
-                    }
-                    )
+                                            </div>
+                                        </div></Link>
+                                    )
+                                }
+                                )
 
-                }
-            </div>
-            <hr className='border-[2px]' />
+                            }
+                        </div>
+                        <hr className='border-[2px]' />
+
+                    </div>
+            }
 
         </div >
     );

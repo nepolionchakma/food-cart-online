@@ -92,8 +92,8 @@ const Header = () => {
                     <div className='w-[80px]'>
                         <Link to="/"><img src="https://www.creativefabrica.com/wp-content/uploads/2021/03/20/Mountain-logo-Design-Graphics-9785421-1-580x435.png" alt="" /></Link>
                     </div>
-                    <div className='hover:text-orange-500 font-bold sm:items-center sm:flex '>
-                        <span className='border-b-[3px] border-orange-500 mx-2'>Marishya ,</span> Rangamati,BD <IoIosArrowDown onClick={showSlideMenu} className='inline font-bold text-2xl' />
+                    <div onClick={showSlideMenu} className='hover:text-orange-500 font-bold sm:items-center sm:flex '>
+                        <span className='border-b-[3px] border-orange-500 mx-2'>Marishya ,</span> Rangamati,BD <IoIosArrowDown className='inline font-bold text-2xl' />
 
                     </div>
                     <form onSubmit={searchFormSubmit}
@@ -106,9 +106,9 @@ const Header = () => {
                     <nav className='list-none mx-3 gap-4 font-bold text-[17px] hidden md:block' >
                         <div className='flex'>
 
-                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><TbProgressHelp />Offer <sup className='text-orange-600'>new</sup></Link>
-                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiLogin />Login</Link>
-                            <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiShoppingCart />Cart</Link>
+                            <Link className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><TbProgressHelp />Offer <sup className='text-orange-600'>new</sup></Link>
+                            <Link to='/login' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiLogin />Login</Link>
+                            <Link className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'><CiShoppingCart />Cart</Link>
                             <Link to='' className='flex mx-2 items-center gap-2 hover:text-orange-500 cursor-pointer'></Link>
                         </div>
                     </nav>

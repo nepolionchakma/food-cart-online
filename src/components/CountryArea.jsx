@@ -5,8 +5,9 @@ const CountryArea = ({ data, code }) => {
 
     // console.log(data, code, 'data');
     // strArea
-    return (
+    return code !== "Unknown" ? (
         <div>
+
             <Link to={`/country/food/${data}`} className=' hover:bg-orange-400 duration-500 flex flex-col cursor-pointer items-center justify-center content-center p-3 rounded-lg group'>
 
                 <div className='w-[100px] h-[100px] flex'>
@@ -15,7 +16,13 @@ const CountryArea = ({ data, code }) => {
                 <span className='group-hover:scale-125 duration-500'>{data}</span>
             </Link>
         </div>
-    );
+    ) : (<Link to={`/country/food/${data}`} className=' hover:bg-orange-400 duration-500 flex flex-col cursor-pointer items-center justify-center content-center p-3 rounded-lg group'>
+
+        <div className='w-[100px] h-[100px] flex'>
+            <img className='group-hover:scale-90 duration-500' src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png" alt="" />
+        </div>
+        <span className='group-hover:scale-125 duration-500'>{data}</span>
+    </Link>)
 };
 
 export default CountryArea;

@@ -8,7 +8,7 @@ const FoodCategory2 = () => {
     console.log(loadData, "loading");
     return (
         <div>
-            <Header></Header>
+
             <div className='flex flex-wrap'>
                 {
                     loadData.map((d, i) => {
