@@ -7,12 +7,12 @@ const CountryArea = ({ data, code }) => {
     // strArea
     return (
         <div>
-            <Link to={`/country/food/${data}`} className=' hover:bg-orange-400 duration-500 flex flex-col cursor-pointer items-center justify-center content-center'>
+            <Link to={`/country/food/${data}`} className=' hover:bg-orange-400 duration-500 flex flex-col cursor-pointer items-center justify-center content-center p-3 rounded-lg group'>
 
                 <div className='w-[100px] h-[100px] flex'>
-                    <img src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${code}.svg`} alt="" />
+                    <img className='group-hover:scale-90 duration-500' src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${code}.svg`} alt="" />
                 </div>
-                {data}
+                <span className='group-hover:scale-125 duration-500'>{data}</span>
             </Link>
         </div>
     );

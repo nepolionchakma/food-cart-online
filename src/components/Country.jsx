@@ -45,7 +45,7 @@ const Country = () => {
     }, [])
     return (
         <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
-            <div className='grid grid-cols-9 gap-3'>
+            <div className='flex flex-wrap justify-center gap-3'>
                 {
                     // 
                     country.map((data, index) => <CountryArea data={data.strArea} code={countryCode[index]} key={index}></CountryArea>)

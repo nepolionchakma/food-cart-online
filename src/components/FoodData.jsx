@@ -6,8 +6,9 @@ const FoodData = () => {
     const sliceData = loadData.slice(0, 16);
     // const { strIngredient, strDescription } = sliceData;
     // const sliceDescription = sliceData.strDescription(0, 20)
+    console.log(sliceData);
     const loadCategories = async () => {
-        const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i");
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?i");
         const data = await res.json();
         setLoadData(data.meals);
     }
@@ -17,15 +18,16 @@ const FoodData = () => {
     return (
         <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <h4 className='font-bold my-6'>What's your Mind Now to buy ?</h4>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+            {/* grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 */}
+            <div className='flex flex-wrap justify-center gap-5'>
                 {
                     sliceData.map((data, i) => {
                         return (
-                            <div key={i} className='cursor-pointer'>
+                            <Link to={`/details/food/${data.idMeal}`} key={i} className='cursor-pointer'>
                                 <div className="group bg-orange-500 rounded shadow-xl hover:bg-orange-300 hover:text-white duration-700 p-4 flex flex-col items-center">
-                                    <h5 className='font-bold'>{data.strIngredient}</h5>
+                                    <h5 className='font-bold'>{data.strMeal.slice(0, 16)}</h5>
                                     <div className=' w-[200px] p-4 '>
-                                        <img className='group-hover:scale-150 duration-[600ms]' src={`https://www.themealdb.com/images/ingredients/${data.strIngredient}.png`} alt="" />
+                                        <img className='group-hover:scale-110 duration-[600ms]' src={data.strMealThumb} alt="" />
                                     </div>
                                     {/* <p>{data.strDescription.slice(0, 120) + "..."}</p> 
                                     
@@ -35,7 +37,7 @@ const FoodData = () => {
                                     */}
 
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })
                 }
