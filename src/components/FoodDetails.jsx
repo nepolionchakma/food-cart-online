@@ -12,7 +12,7 @@ const FoodDetails = () => {
             .then(res => res.json())
             .then(data => setRelatedFood(data.meals))
     }, [])
-    console.log(relatedFood);
+    // console.log(relatedFood);
     return (
         <div className='py-2 my-8 max-w-[1200px] mx-auto'>
             <div className=' flex justify-center items-center xlsm:justify-around'>

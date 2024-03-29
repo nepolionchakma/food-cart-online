@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import CountryArea from './CountryArea';
 
 const Country = () => {
     const [country, setCountry] = useState([]);
-
+    console.log(country);
     const countryCode = [
-
-        "BD",
         "US",
         "GB",
         "CA",
@@ -32,29 +31,24 @@ const Country = () => {
         "TH",
         "TN",
         "TR",
+        "Unknown",
+        "VN",
     ];
 
-    // const loadCountry = async () => {
-    //     const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list");
-    //     const data = await res.json();
-    //     setCountry(data.meals);
-    // }
-    // useEffect(() => {
-    //     loadCountry();
-    // }, [])
+    const loadCountry = async () => {
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?a");
+        const data = await res.json();
+        setCountry(data.meals);
+    }
+    useEffect(() => {
+        loadCountry();
+    }, [])
     return (
         <div className='p-6 max-w-[1200px] mx-auto items-center my-6'>
             <div className='grid grid-cols-9 gap-3'>
                 {
-                    countryCode.map((d, i) => {
-                        return (
-                            <div key={i} className=' hover:bg-orange-400 duration-500 flex items-center justify-center content-center'>
-                                <div className='w-[100px] h-[100px] flex'>
-                                    <img src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${d}.svg`} alt="" />
-                                </div>
-                            </div>
-                        )
-                    })
+                    // 
+                    country.map((data, index) => <CountryArea data={data.strArea} code={countryCode[index]} key={index}></CountryArea>)
                 }
             </div>
         </div>

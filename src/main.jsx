@@ -13,6 +13,8 @@ import Home from './components/Home.jsx'
 import Form from './components/Form.jsx'
 import SearchItems from './components/SearchItems.jsx'
 import DataNotFound from './components/DataNotFound.jsx'
+import CountryArea from './components/CountryArea.jsx'
+import CountryFoodDetails from './components/CountryFoodDetails.jsx'
 
 const router = createBrowserRouter(
   [
@@ -57,6 +59,11 @@ const router = createBrowserRouter(
           path: '/details/foodIngredient/:strIngredient',
           loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=${params.strIngredient}`),
           element: <FoodCategory2></FoodCategory2>
+        },
+        {
+          path: '/country/food/:data',
+          loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${params.data}`),
+          element: <CountryFoodDetails></CountryFoodDetails>
         },
       ]
     },

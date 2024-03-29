@@ -22,10 +22,10 @@ const FoodData = () => {
                     sliceData.map((data, i) => {
                         return (
                             <div key={i} className='cursor-pointer'>
-                                <div className="bg-orange-500 rounded shadow-xl hover:bg-orange-300 hover:text-white duration-700 p-4 flex flex-col items-center">
+                                <div className="group bg-orange-500 rounded shadow-xl hover:bg-orange-300 hover:text-white duration-700 p-4 flex flex-col items-center">
                                     <h5 className='font-bold'>{data.strIngredient}</h5>
-                                    <div className='group w-[200px] p-4 '>
-                                        <img className='group-hover:scale-100' src={`https://www.themealdb.com/images/ingredients/${data.strIngredient}.png`} alt="" />
+                                    <div className=' w-[200px] p-4 '>
+                                        <img className='group-hover:scale-150 duration-[600ms]' src={`https://www.themealdb.com/images/ingredients/${data.strIngredient}.png`} alt="" />
                                     </div>
                                     {/* <p>{data.strDescription.slice(0, 120) + "..."}</p> 
                                     

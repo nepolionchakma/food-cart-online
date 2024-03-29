@@ -1,19 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
+import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
-const CategoryItemDetails = (handleCart) => {
-
-    // console.log(data.idCategory);
-    // const [cart, setCart] = useState([]);
-    const ser = useSearchParams();
-    // searchParams.get("__firebase_request_key")
+const CountryFoodDetails = () => {
     const load = useLoaderData();
-    // console.log(load.meals, "data");
-    // console.log(handleCart);
-    // const handleCart = (id) => {
-    //     // setCart(id);
-    //     console.log(alert("clicked"));
-    // }
+    // const loadedData = load.meals;
+    console.log(load.meals, "foof");
     return (
         <div>
             <div className='py-2 max-w-[1200px] mx-auto flex justify-center items-center xlsm:justify-around'>
@@ -38,4 +29,4 @@ const CategoryItemDetails = (handleCart) => {
     );
 };
 
-export default CategoryItemDetails;
+export default CountryFoodDetails;
