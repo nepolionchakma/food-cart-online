@@ -24,10 +24,10 @@ const FoodData = () => {
                     sliceData.map((data, i) => {
                         return (
                             <Link to={`/details/food/${data.idMeal}`} key={i} className='cursor-pointer'>
-                                <div className="group bg-orange-500 rounded shadow-xl hover:bg-orange-300 hover:text-white duration-700 p-4 flex flex-col items-center">
+                                <div className="group bg-orange-500 rounded shadow-xl hover:bg-orange-300 hover:text-white duration-700 p-2 flex flex-col items-center">
                                     <h5 className='font-bold'>{data.strMeal.slice(0, 16)}</h5>
-                                    <div className=' w-[200px] p-4 '>
-                                        <img className='group-hover:scale-110 duration-[600ms]' src={data.strMealThumb} alt="" />
+                                    <div className=' w-[150px] p-4 overflow-hidden'>
+                                        <img className='group-hover:scale-110 duration-[600ms] rounded-lg' src={data.strMealThumb} alt="" />
                                     </div>
                                     {/* <p>{data.strDescription.slice(0, 120) + "..."}</p> 
                                     

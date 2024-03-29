@@ -7,7 +7,7 @@ const ABCD = () => {
         <div className='p-6 max-w-[1200px] mx-auto my-6'>
             <h5 className=''></h5>
             <div className='font-bold text-center my-5'>Filter By Alphabate</div>
-            <div className=' flex justify-center'>
+            <div className=' flex flex-wrap justify-center'>
                 {abcdefg.map((a, i) => {
                     return (
                         <div key={i} className='mx-2'>
